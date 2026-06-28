@@ -29,3 +29,8 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_technologies_list(self):
+        if not self.technologies:
+            return []
+        return [tech.strip() for tech in self.technologies.split(',') if tech.strip()]
